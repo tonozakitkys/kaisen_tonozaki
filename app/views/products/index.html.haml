@@ -13,8 +13,8 @@
   - @products.each do |product|
     %tr
       %td= product.name
-      %td= product.description
-      %td= product.image_url
+      %td= simple_format(product.description)
+      %td= image_tag(product.image_url)
       %td= product.price
       %td= link_to 'Show', product
       %td= link_to 'Edit', edit_product_path(product)
