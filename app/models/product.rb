@@ -9,6 +9,6 @@ class Product < ActiveRecord::Base
 
   private
   def price_must_be_multiple_of_hundreds
-    errors.add(:price, "must be multiple of hundreds") if price % 100 != 0
+    errors.add(:price, "must be multiple of hundreds") unless price % 100 == 0
   end
 end
