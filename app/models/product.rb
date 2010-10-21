@@ -7,6 +7,9 @@ class Product < ActiveRecord::Base
 
   validate :price_must_be_multiple_of_hundreds
 
+  scope :for_sale, :order => "created_at DESC"
+  scope :name_like, lambda {|q| {:conditions => ['name like ?', "%#{q}%"]}}
+
   private
   def price_must_be_multiple_of_hundreds
     errors.add(:price, "must be multiple of hundreds") unless price % 100 == 0
