@@ -20,6 +20,7 @@
       %td= link_to 'Edit', edit_shop_path(shop)
       %td= link_to 'Destroy', shop, :confirm => 'Are you sure?', :method => :delete
 
+= will_paginate @shops
 %br
 
 = link_to 'New Shop', new_shop_path
