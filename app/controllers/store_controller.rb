@@ -9,6 +9,11 @@ class StoreController < ApplicationController
     @cart.add_product(@product)
   end
 
+  def empty_cart
+    session[:cart] = nil
+    redirect_to store_path, :notice => "カートは現在空です"
+  end
+
   private
   def current_cart
     session[:cart] ||= Cart.new
