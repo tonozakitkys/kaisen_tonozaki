@@ -1,14 +1,14 @@
 class Cart
   def add_product(product)
-    quantities_by_item_id[product.id] += 1
+    current_item = items.find{|item| item.product_id == product.id}
+    if current_item
+      current_item.increment_quantity
+    else
+      items << CartItem.new(product)
+    end
   end
 
-  def items_with_quantity
-    quantities_by_item_id.map{|product_id, quantity| [Product.find(product_id), quantity]}
-  end
-
-  private
-  def quantities_by_item_id
-    @quantities_by_item_id ||= Hash.new(0)
+  def items
+    @items ||= []
   end
 end
