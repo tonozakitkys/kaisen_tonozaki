@@ -1,9 +1,7 @@
 .cart-title 買い物カゴ
 
-%p #{@product.name}が買い物カゴに追加されました
-
 %table
-  = render :partial => 'cart_item', :collection => @cart.items
+  = render :partial => 'cart_item', :collection => cart.items
 
   %tr.total-line
     %td 合計)
