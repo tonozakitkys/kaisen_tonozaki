@@ -12,6 +12,10 @@ class Cart
     items.reject!{|item| item.product_id == product.id}
   end
 
+  def empty!
+    @items = nil
+  end
+
   def items
     @items ||= []
   end
