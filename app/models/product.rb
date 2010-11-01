@@ -13,6 +13,7 @@ class Product < ActiveRecord::Base
   scope :recommended, :conditions => {:recommended => true}
 
   belongs_to :shop
+  has_many :line_items
 
   private
   def price_must_be_multiple_of_hundreds
