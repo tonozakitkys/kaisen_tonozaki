@@ -3,4 +3,7 @@ class Shop < ActiveRecord::Base
   validates_format_of :image_url, :with => %r{\.(gif|jpg|png)$}i,
                       :messsage => "はGIF,JPG,PNG画像のURLでなければなりません"
   validates_uniqueness_of :name
+
+  has_many :products
+
 end

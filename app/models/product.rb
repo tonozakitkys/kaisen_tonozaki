@@ -12,6 +12,8 @@ class Product < ActiveRecord::Base
   scope :recent, lambda {|n| {:limit => n, :order => "created_at DESC"}}
   scope :recommended, :conditions => {:recommended => true}
 
+  belongs_to :shop
+
   private
   def price_must_be_multiple_of_hundreds
     errors.add(:price, "must be multiple of hundreds") unless price % 100 == 0

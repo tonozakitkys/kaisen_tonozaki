@@ -83,3 +83,11 @@ body {
   border-bottom: 1px dotted;
   margin-bottom: 10px;
 }
+
+#store .product .shop {
+  font-size: 100%;
+  font-weight: bold;
+  color: red;
+}
+
+

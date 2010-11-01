@@ -29,6 +29,10 @@ class StoreController < ApplicationController
     end
   end
 
+  def suppliers
+    @suppliers = Shop.all
+  end
+
   private
   def set_cart
     @cart = session[:cart] ||= Cart.new
