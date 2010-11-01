@@ -5,6 +5,8 @@ KaisenTonozaki::Application.routes.draw do
   post "store/add_to_cart/:id" => "store#add_to_cart"
   post "store/remove_item_from_cart/:id" => "store#remove_item_from_cart"
   post "store/empty_cart" => "store#empty_cart"
+  match "store/checkout", :as => :checkout
+  post "store/save_order", :as => :save_order
 
   resources :shops
 

@@ -22,7 +22,6 @@ class StoreController < ApplicationController
   end
 
   def empty_cart
-    #session[:cart] = nil
     @cart.empty!
     respond_to do |format|
       format.js
@@ -31,6 +30,25 @@ class StoreController < ApplicationController
 
   def suppliers
     @suppliers = Shop.all
+  end
+
+  def checkout
+    if @cart.nil? || @cart.items.empty?
+      redirect_to store_path, :notice => "カートは現在空です"
+    end
+
+    @order = Order.new
+  end
+
+  def save_order
+    @order = Order.new(params[:order])
+    @order.add_line_items_from_cart(@cart)
+    if @order.save
+      @cart.empty!
+      redirect_to store_path, :notice => "ご注文ありがとうございます！ｍ（＿＿）ｍ"
+    else
+      render checkout_path
+    end
   end
 
   private
