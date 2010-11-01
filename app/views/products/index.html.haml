@@ -3,17 +3,17 @@
 %table
   %tr
     %th Name
+    %th Shop
     %th Description
     %th Image
     %th Price
     %th Recommended
-    %th
-    %th
-    %th
+    %th{:colspan => 3}
 
   - @products.each do |product|
     %tr
       %td= product.name
+      %td= product.shop.name
       %td= simple_format(product.description)
       %td= image_tag(product.image_url)
       %td= product.price
