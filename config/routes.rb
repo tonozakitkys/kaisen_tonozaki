@@ -1,4 +1,6 @@
 KaisenTonozaki::Application.routes.draw do
+  get "orders/index"
+
   get "store/index"
   get "store" => "store#index", :as => :store
   get "store/suppliers"
@@ -9,6 +11,7 @@ KaisenTonozaki::Application.routes.draw do
   post "store/save_order", :as => :save_order
 
   resources :shops
+  resources :orders
 
   resources :products
 
